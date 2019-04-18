@@ -1,0 +1,16 @@
+version: "3.1"
+
+services:
+  mariadb2:
+    image: mariadb
+    restart: always
+    expose:
+      - "3306"
+    ports:
+      - "3123:3306"
+    volumes:
+      - "/c/Databases/mariadb:/var/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root

@@ -1,0 +1,22 @@
+{
+  "Services": {
+    "mariadb2": {
+      "Env": [
+        "MYSQL_ROOT_PASSWORD=root",
+        "MYSQL_USER=root",
+        "MYSQL_PASSWORD=root"
+      ],
+      "Image": "mariadb@sha256:d957946c3a6470ecb3c2d41bea7fba38ad07f10b2f3fe13bb711f42fba8c5022",
+      "Networks": [
+        "default"
+      ],
+      "Ports": [
+        {
+          "Port": 3306,
+          "Protocol": "tcp"
+        }
+      ]
+    }
+  },
+  "Version": "0.1"
+}
