@@ -1,0 +1,110 @@
+[
+  {
+		"nome": "marias",
+    "idade": 35,
+    "sexo": "f",
+    "infectado": 1,
+    "latitude": -11.332,
+    "longitude": 12.666,
+    "agua": 0,
+    "comida": 0,
+    "remedio": 0,
+    "municao": 0
+  },
+  {
+    "nome": "felipe",
+    "idade": 30,
+    "sexo": "m",
+    "infectado": 0,
+    "latitude": -0.124,
+    "longitude": 52.111,
+    "agua": 0,
+    "comida": 0,
+    "remedio": 0,
+    "municao": 0
+  },
+  {
+    "nome": "lizyane",
+    "idade": 35,
+    "sexo": "f",
+    "infectado": 0,
+    "latitude": -11.332,
+    "longitude": 12.666,
+    "agua": 4,
+    "comida": 0,
+    "remedio": 0,
+    "municao": 0
+  },
+  {
+    "nome": "carlos",
+    "idade": 35,
+    "sexo": "m",
+    "infectado": 1,
+    "latitude": -11.332,
+    "longitude": 12.666,
+    "agua": 0,
+    "comida": 0,
+    "remedio": 0,
+    "municao": 0
+  },
+  {
+    "nome": "alfredo",
+    "idade": 30,
+    "sexo": "m",
+    "infectado": 0,
+    "latitude": -0.124,
+    "longitude": 52.111,
+    "agua": 0,
+    "comida": 0,
+    "remedio": 0,
+    "municao": 0
+  },
+  {
+    "nome": "joene",
+    "idade": 35,
+    "sexo": "f",
+    "infectado": 0,
+    "latitude": -11.332,
+    "longitude": 12.666,
+    "agua": 0,
+    "comida": 0,
+    "remedio": 0,
+    "municao": 0
+  },
+  {
+    "nome": "iara",
+    "idade": 35,
+    "sexo": "f",
+    "infectado": 0,
+    "latitude": -11.332,
+    "longitude": 12.666,
+    "agua": 0,
+    "comida": 0,
+    "remedio": 0,
+    "municao": 0
+  },
+  {
+    "nome": "yuri",
+    "idade": 30,
+    "sexo": "m",
+    "infectado": 0,
+    "latitude": -0.124,
+    "longitude": 52.111,
+    "agua": 0,
+    "comida": 0,
+    "remedio": 0,
+    "municao": 0
+  },
+  {
+    "nome": "joena",
+    "idade": 35,
+    "sexo": "f",
+    "infectado": 0,
+    "latitude": -11.332,
+    "longitude": 12.666,
+    "agua": 0,
+    "comida": 0,
+    "remedio": 0,
+    "municao": 0
+  }
+]

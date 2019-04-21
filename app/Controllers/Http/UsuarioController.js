@@ -1,6 +1,5 @@
 'use strict'
-
-const Database = use ('Database')
+const Database = use('Database')
 const Usuario = use('App/Models/Usuario')
 
 class UsuarioController {
@@ -42,20 +41,88 @@ class UsuarioController {
         return await usuario.save()
     }
 
-    async delete ({ request, response }) {
+    async destroy ({ request, response }) {
         const usuario = await Usuario.findOrFail(request.params.id)
 
         await usuario.delete()
 
         return "Usuario Deletado"
-
-     /*    await Database
-            .table('usuarios')
-            .where({ id: request.params.id} )
-            .delete()
-        return response.json({ delete: "Usuario Deletado" }) */
     }
 
+    async relatorio () {
+        var total, zombie, humano, resultado, agua, comida, remedio, municao
+    
+        for (var valor of await Database.from('usuarios').count()){
+            total = JSON.parse(Object.values(valor))
+        }
+        
+        for (var valor of await Database.from('usuarios').sum('infectado')){
+            zombie = JSON.parse(Object.values(valor))
+            humano = total - zombie
+        }
+
+        //console.log(await Database.from('usuarios').getCountDistinct('agua'))
+        //agua = await Database.from('usuarios').sum('agua').map(water => JSON.parse(Object.values(water)))
+        for (var valor of await Database.from('usuarios').avg('agua')){
+            agua = JSON.parse(Object.values(valor))
+        }
+
+        for (var valor of await Database.from('usuarios').avg('comida')){
+            comida = JSON.parse(Object.values(valor))
+        }
+
+        for (var valor of await Database.from('usuarios').avg('remedio')){
+            remedio = JSON.parse(Object.values(valor))
+        }
+        for (var valor of await Database.from('usuarios').avg('municao')){
+            municao = JSON.parse(Object.values(valor))
+        }
+/*         console.log(Math.round((zombie/total)*100))
+        console.log(Math.round((humano/total)*100))
+ */
+        //console.log(typeof infectado)
+        resultado = {
+            "infectados" : Math.round((zombie/total)*100)+'%',
+            "não-infectados": Math.round((humano/total)*100)+'%',
+            "inventario": {
+                "agua": agua,
+                "comida": comida,
+                "remedio": remedio,
+                "municao": municao
+            }
+        }
+        return resultado
+    }
+
+    async addItem ({ request }) {
+        const usuario = await Usuario.findOrFail(request.params.id)
+
+        if (usuario.infectado === 0){
+            usuario.merge(request.only(['agua', 'comida', 'remedio', 'municao']))
+            return usuario.save()
+        } else {
+            return "usuario infectado"
+        }
+    }
+
+    async deleteItem ({ request }) {
+        const usuario = await Usuario.findOrFail(request.params.id)
+
+        if (usuario.infectado === 0){
+            usuario.merge(request.only(['agua', 'comida', 'remedio', 'municao']))
+            return usuario.save()
+        } else {
+            return "usuario infectado"
+        }
+    }
+
+    async trocarItens({ request }){
+        var user1       = await Usuario.findBy("id", request.body.usuario1)
+        var user2       = await Usuario.findBy("id", request.body.usuario2)
+        
+        
+        return user1
+    }
     /* async infectados ({ request }) {
         const usuario = await Usuario.all()
 
