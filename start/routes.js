@@ -19,17 +19,17 @@ const Route = use('Route')
 const Database = use('Database')
 
 Route.get('/', () => {
-  return { greeting: 'Hello world in JSON' }
+  return { 
+    API: 'API ZOMBIE', 
+    DEVELOPER: 'Felipe Santos', 
+    EMAIL: 'felipeschimidt85@gmail.com'
+  }
 })
 
 Route.group(() => {
   Route.resource('usuarios', 'UsuarioController').apiOnly()
 
-  Route.resource('infectados', 'InfectadoController').apiOnly()
-
   Route.get('relatorio', 'UsuarioController.relatorio')
-  
-  Route.get('trocar', 'UsuarioController.trocarItens')
 
   Route.put(':id/infectado', 'UsuarioController.updateInfectado')
   
