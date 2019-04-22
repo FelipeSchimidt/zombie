@@ -4,10 +4,18 @@
 const Model = use('Model')
 
 class Usuario extends Model {
-    
-    /* usuariosInfectados() {
-        return 
-    } */
+    infectado(){
+        return this.hasOne('App/Models/Infected')
+    }
+    getAgua(n){
+        return n * 4
+    }
+    getComida(n){
+        return n * 3
+    }
+    getRemedio(n){
+        return n * 2
+    }
 }
 
 module.exports = Usuario

@@ -12,7 +12,7 @@ class UsuarioSchema extends Schema {
         table.string('nome', 80).notNullable().unique()
         table.integer('idade').notNullable()
         table.string('sexo', 1).notNullable()
-        table.boolean('infectado').defaultTo(false)
+        table.integer('id_infectado').unsigned().defaultTo(0)
         table.decimal('latitude', 8, 3).notNullable().defaultTo(0)
         table.decimal('longitude', 8, 3).notNullable().defaultTo(0)
         table.integer('agua').unsigned().defaultTo(0)

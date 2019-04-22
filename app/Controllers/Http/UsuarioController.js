@@ -1,6 +1,7 @@
 'use strict'
 const Database = use('Database')
 const Usuario = use('App/Models/Usuario')
+const Infectado = use('App/Models/Infected')
 
 class UsuarioController {
     async index () {
@@ -39,6 +40,25 @@ class UsuarioController {
         usuario.merge(request.only(['latitude', 'longitude']))
 
         return await usuario.save()
+    }
+
+    async updateInfectado( { request } ) {
+        const usuario = await Usuario.findOrFail(request.params.id)
+        usuario.merge(request.only('id_infectado'))
+        await usuario.save()
+
+
+        const infectado = new Infectado()
+        infectado.id_usuario = request.params.id
+        infectado.id_infectado = request.only('id_infectado')
+        await infectado.save()
+        
+        return "Usuario "+ usuario.nome + " marcou usuario " + usuario.id_infectado + " como infectado"
+    }
+
+    async indexInfecteds () {
+        const infectados = await Infectado.all()
+        return infectados
     }
 
     async destroy ({ request, response }) {
@@ -120,7 +140,7 @@ class UsuarioController {
         var user1       = await Usuario.findBy("id", request.body.usuario1)
         var user2       = await Usuario.findBy("id", request.body.usuario2)
         
-        
+        console.log(user1.toJSON())
         return user1
     }
     /* async infectados ({ request }) {
@@ -130,6 +150,7 @@ class UsuarioController {
 
         return usuario
     } */
+    
 }
 
 module.exports = UsuarioController

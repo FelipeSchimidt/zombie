@@ -23,14 +23,18 @@ Route.get('/', () => {
 })
 
 Route.group(() => {
-  Route.resource('usuarios', 'UsuarioController')
+  Route.resource('usuarios', 'UsuarioController').apiOnly()
+
+  Route.resource('infectados', 'InfectadoController').apiOnly()
 
   Route.get('relatorio', 'UsuarioController.relatorio')
   
   Route.get('trocar', 'UsuarioController.trocarItens')
+
+  Route.put(':id/infectado', 'UsuarioController.updateInfectado')
   
   Route.post(':id/items', 'UsuarioController.addItem')
-  
+
   Route.delete(':id/items', 'UsuarioController.deleteItem')
 
   Route.put('/usuarios/localizacao/:id', 'UsuarioController.updatePosicao')
