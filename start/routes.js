@@ -27,15 +27,17 @@ Route.get('/', () => {
 })
 
 Route.group(() => {
-  Route.resource('usuarios', 'UsuarioController').apiOnly()
-
-  Route.get('relatorio', 'UsuarioController.relatorio')
-
-  Route.put(':id/infectado', 'UsuarioController.updateInfectado')
   
-  Route.post(':id/items', 'UsuarioController.addItem')
-
-  Route.delete(':id/items', 'UsuarioController.deleteItem')
-
-  Route.put('/usuarios/localizacao/:id', 'UsuarioController.updatePosicao')
+  Route.get('/usuarios', 'UsuarioController.index')
+  Route.post('/usuarios', 'UsuarioController.store')
+  Route.get('/usuarios/:id', 'UsuarioController.show')
+  Route.put('/usuarios/:id', 'UsuarioController.update')
+  Route.put('/usuarios/:id/localizacao', 'UsuarioController.updatePosicao')
+  Route.put('/usuarios/:id/infectado', 'UsuarioController.updateInfectado')  
+  Route.post('/usuarios/:id/items', 'UsuarioController.addItem')
+  Route.delete('/usuarios/:id/items', 'UsuarioController.deleteItem')
+  
+  Route.delete('/usuarios/:id', 'UsuarioController.destroy')
+  
+  Route.get('/relatorio', 'UsuarioController.relatorio')
 })
