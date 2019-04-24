@@ -7,10 +7,12 @@ services:
     expose:
       - "3306"
     ports:
-      - "3123:3306"
+      - "3306:3306"
+    command: --init-file /data/application/init.sql
     volumes:
-      - "/c/Databases/mariadb:/var/lib/mysql"
+        - ./init.sql:/data/application/init.sql
     environment:
+      MYSQL_DATABASE: adonis
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: root
       MYSQL_PASSWORD: root
