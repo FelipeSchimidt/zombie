@@ -28,23 +28,16 @@ Route.get('/', () => {
 
 Route.group(() => {
   
-  Route.get('/usuarios', 'UsuarioController.index')
-  
-  Route.get('/usuarios/:id', 'UsuarioController.show')
-  
-  Route.post('/usuarios', 'UsuarioController.store')
-  
-  Route.put('/usuarios/:id', 'UsuarioController.update')
-  
+  Route.get('/usuarios', 'UsuarioController.index')  
+  Route.get('/usuarios/:id', 'UsuarioController.show')  
+  Route.post('/usuarios', 'UsuarioController.store')  
+  Route.put('/usuarios/:id', 'UsuarioController.update')  
   Route.delete('/usuarios/:id', 'UsuarioController.destroy')
 
+  Route.put('/usuarios/:id/infectado', 'UsuarioController.updateInfectado')  
+  Route.post('/usuarios/:id/items', 'UsuarioController.addItem')
+  Route.delete('/usuarios/:id/items', 'UsuarioController.deleteItem')
+  Route.put('/usuarios/:id/localizacao', 'UsuarioController.updatePosicao')
+
   Route.get('/relatorio', 'UsuarioController.relatorio')
-
-  Route.put(':id/infectado', 'UsuarioController.updateInfectado')
-  
-  Route.post(':id/items', 'UsuarioController.addItem')
-
-  Route.delete(':id/items', 'UsuarioController.deleteItem')
-
-  Route.put('/usuarios/localizacao/:id', 'UsuarioController.updatePosicao')
 })

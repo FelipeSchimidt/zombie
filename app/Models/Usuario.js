@@ -4,17 +4,16 @@
 const Model = use('Model')
 
 class Usuario extends Model {
-    infectado(){
-        return this.hasOne('App/Models/Infected')
+    getListaInfectados(lista){
+        return JSON.stringify(lista)
     }
-    getAgua(n){
-        return n * 4
+
+    setInfeccao(id){
+        return id <= 3 ? id + 1 : id
     }
-    getComida(n){
-        return n * 3
-    }
-    getRemedio(n){
-        return n * 2
+
+    infeccaos(){
+        return this.hasMany('App/models/Infeccao', 'id', 'id_indica')
     }
 }
 
